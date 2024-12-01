@@ -1,0 +1,35 @@
+<div class="card">
+
+
+
+    <div class="card-body">
+        <div class="mb-3">
+            <div>{{student.id}}</div>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-text">your name  שם</div>
+            <label for="name" class="form-label"></label>
+            <input type="text" class="form-control" id="name" [value]="student.name" #nameInput>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-text">ממוצע</div>
+            <label for="avrage" class="form-label"></label>
+            <input type="number" class="form-control" id="avrage" [value]="student.avrage" #avrageInput>
+        </div>
+
+  
+        <div class="mb-3">
+            <div class="form-text">פעיל</div>
+            <label class="form-check-label" for="flexCheckChecked"></label>
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [value] = "student.isActive" #activeInput>
+        </div>
+
+
+        <button class="btn btn-outline-success"
+            (click)="confirm({id: student.id, name: nameInput.value, deparureDate: student.deparureDate, avrage: avrageInput.valueAsNumber, isActive: activeInput.checked})"><i
+                class="bi bi-check-lg"></i></button>
+        <button class="btn btn-outline-danger" (click)="close()"><i class="bi bi-x-lg"></i></button>
+    </div>
+</div>
