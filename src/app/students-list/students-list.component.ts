@@ -1,5 +1,6 @@
 import { Component, numberAttribute } from '@angular/core';
-import { Student } from './student-model';
+import { Student } from '../models/student.model';
+import { Course } from '../models/course.model';
 
 @Component({
   selector: 'students-list',
@@ -8,7 +9,7 @@ import { Student } from './student-model';
 })
 export class StudentsListComponent {
   // students: Student[] = [new Student("noa"),new Student("avi"),new Student("moishie"),new Student("yael", new Date())]
-  selectedStudent: Student = {id: Student.nextId, name: "" , avrage:0}
+  selectedStudent: Student = {id: Student.nextId, name: "" , avrage:0, isActive: true, year: 1, course: new Course(0,"")}
 
   students: Student[] = []
 
@@ -34,7 +35,8 @@ export class StudentsListComponent {
   addStudent(student: Student){
     console.log(student,"aaaaaaaaaaaooooooooooooooooooooooooooorrrrrrrrrrrrrrrrrrrrruuuuuuuuuuuuuuuuuuuu");
 
-    this.students.push(new Student(student.name, student.deparureDate, student.avrage, student.isActive))
+    this.students.push(new Student(student.name,student.isActive, student.course, student.year, student.deparureDate, student.avrage))
+    this.alertSuccess('added', student)
   }
 
   updateStudent(student: Student){
@@ -44,8 +46,18 @@ export class StudentsListComponent {
         return studentEle.id == student.id;
     });
     this.students[studentInd].name = student.name
+    this.students[studentInd].isActive = student.isActive
+    this.students[studentInd].year = student.year
+    this.students[studentInd].course = student.course
     this.students[studentInd].deparureDate = student.deparureDate
     this.students[studentInd].avrage = student.avrage
+    this.alertSuccess("apdated", student)
+  }
+
+  alertSuccess(type: string, student:Student){
+    alert(`student ${student.id} was ${type} successfullly
+      name: ${student.name} course: ${student.course} year: ${student.year}`)
+
   }
 
   closeDetails(){
@@ -55,12 +67,10 @@ export class StudentsListComponent {
   openUpdateStudent(student: Student){
     this.selectedStudent = student
     this.showDetails = true
-    console.log(this.selectedStudent,"ssssssssssssssssssssssssssssss update");
-    
   }
 
   openAddStudent(){
-    this.selectedStudent = {id: Student.nextId, name: "", avrage:0}
+    this.selectedStudent = {id: Student.nextId, name: "" , avrage:0, isActive: true,  course: new Course(0,"")}
     this.showDetails = true
     console.log(this.selectedStudent,"ssssssssssssssssssssssssssssss add");
 
