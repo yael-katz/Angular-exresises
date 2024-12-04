@@ -1,6 +1,7 @@
 import { Component, numberAttribute } from '@angular/core';
 import { Student } from '../models/student.model';
 import { Course } from '../models/course.model';
+import { StudentService } from '../sevices/student.service';
 
 @Component({
   selector: 'students-list',
@@ -11,10 +12,14 @@ export class StudentsListComponent {
   // students: Student[] = [new Student("noa"),new Student("avi"),new Student("moishie"),new Student("yael", new Date())]
   selectedStudent: Student = {id: Student.nextId, name: "" , avrage:0, isActive: true, year: 1, course: new Course(0,"")}
 
-  students: Student[] = []
+  students: Student[] = this._studentService.getstudents()
 
   showDetails: boolean = false 
 
+
+  constructor(private _studentService: StudentService){
+
+  }
 
   deleteStudent(student: Student){
     let studentInd: number = this.students.findIndex((studentEle: Student, index: number, obj: Student[]) => {
