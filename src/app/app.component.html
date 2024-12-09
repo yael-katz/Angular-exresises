@@ -1,5 +1,6 @@
 <div class="container">
     <h1>{{title}}</h1>
     <p>{{sayHelloAcordingTime()}}</p>
-    <students-list></students-list>
+    <students-list (chooseId)="putId($event)"></students-list>
+    <student-avrage *ngIf="selectedId" [id]="selectedId" ></student-avrage>
 </div>

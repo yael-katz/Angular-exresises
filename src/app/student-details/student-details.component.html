@@ -27,6 +27,18 @@
             </div>
 
 
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="avrage" name="avrage" formControlName="avrage" [ngClass]="{'is-invalid': studentForm.controls['avrage'].touched && studentForm.controls['avrage'].errors,
+                    'is-valid': studentForm.controls['avrage'].touched && studentForm.controls['avrage'].valid
+                }">
+                <label for="avrage" class="form-label">avrage</label>
+                <ng-container *ngIf="studentForm.controls['avrage'].errors">
+                    <div *ngIf="studentForm.touched && (studentForm.controls['avrage'].errors['min'] || studentForm.controls['avrage'].errors['max'])"
+                        class="invalid-feedback">avrage must be 0-100</div>
+                </ng-container>
+            </div>
+
+
             <div class="form-text">year of course</div>
             <div class="form-check form-check-inline">
                 <input type="radio" class="form-check-input" [value]="year.First" name="year" formControlName="year">
@@ -48,16 +60,25 @@
             </div>
 
 
+
+
             <div class="form-text" [ngSwitch]="studentForm.controls['year'].value">
                 <div *ngSwitchCase="year.First">230 days of course</div>
                 <div *ngSwitchCase="year.Second">240 days of course</div>
                 <div *ngSwitchCase="year.Third">150 days of course</div>
             </div>
 
+            <b>the total abcence days: 0533111698 malki gefner {{totalAbsenceDays}}</b>
+
+            <div class="input-group">
+                <span class="input-group-text">absence from date:</span>
+                <input type="date" aria-label="First name" class="form-control" #fromDateInput>
+                <span class="input-group-text">number day of absence:</span>
+                <input type="number" aria-label="Last name" class="form-control" #daysInput>
+            </div>
 
             <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="isActive" formControlName="isActive"
-                [ngClass]="{'is-invalid': studentForm.controls['isActive'].touched && studentForm.controls['isActive'].value == false,
+                <input type="checkbox" class="form-check-input" id="isActive" formControlName="isActive" [ngClass]="{'is-invalid': studentForm.controls['isActive'].touched && studentForm.controls['isActive'].value == false,
                 'is-valid': studentForm.controls['isActive'].touched && studentForm.controls['isActive'].valid
                 }">
                 <label class="form-check-label form-text" for="isActive">active student?</label>
@@ -67,8 +88,8 @@
 
             <div class="row">
                 <div class="col-md-2">
-                    <button class="btn btn-outline-primary" type="submit" [disabled]="!studentForm.valid" (click)="submit()"
-                        #submitButton>Submit
+                    <button class="btn btn-outline-primary" type="submit" [disabled]="!studentForm.valid"
+                        (click)="submit(fromDateInput.valueAsDate ,daysInput.valueAsNumber)" #submitButton>Submit
                         <i class="bi bi-check-lg"></i></button>
                 </div>
                 <div class="col-md-2">

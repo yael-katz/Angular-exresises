@@ -1,3 +1,4 @@
+import { AbsenceDays } from "./absenceDays.model";
 import { Course } from "./course.model";
 
 export class Student {
@@ -10,8 +11,9 @@ export class Student {
     isActive: boolean
     year?: Year
     course: Course
+    absenceDays: AbsenceDays[]
 
-    constructor(name: string, isActive: boolean, course: Course, year?: Year, dd?: Date, avrage?: number){
+    constructor(name: string, isActive: boolean, course: Course, absenceDays: AbsenceDays[], year?: Year, avrage?: number, dd?: Date){
         
         this.id = Student.nextId++
 
@@ -21,6 +23,7 @@ export class Student {
         this.isActive = isActive
         this.year = year
         this.course = course
+        this.absenceDays =  [...absenceDays]
 
     }
 }

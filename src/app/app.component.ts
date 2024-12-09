@@ -5,6 +5,21 @@ import { Component } from "@angular/core";
     selector: "my-app-root"
 })
 export class AppComponent {
+
+    selectedId?: number;
+
+    putId(id: number) {
+        
+        this.selectedId = id
+        console.log("pppppppppppppppppppppppppppppppppppppp",id);
+
+    }
+
+
+
+
+
+
     x: number = 5;
 
     title: string = "Hello My - App";
