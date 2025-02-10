@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Student, Year } from '../models/student.model';
+import { Student, Year } from '../../../models/student.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Course, COURSES_LIST } from '../models/course.model';
-import { AbsenceDays } from '../models/absenceDays.model';
-import { StudentService } from '../sevices/student.service';
+import { Course, COURSES_LIST } from '../../../models/course.model';
+import { AbsenceDays } from '../../../models/absenceDays.model';
+import { StudentService } from '../../../sevices/student.service';
 
 @Component({
   selector: 'student-details',

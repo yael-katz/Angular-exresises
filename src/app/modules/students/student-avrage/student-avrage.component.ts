@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { StudentService } from '../sevices/student.service';
+import { StudentService } from '../../../sevices/student.service';
 
 @Component({
   selector: 'student-avrage',

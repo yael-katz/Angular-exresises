@@ -2,8 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { Student } from '../models/student.model';
-import { StudentService } from '../sevices/student.service';
+import { Student } from '../../../models/student.model';
+import { StudentService } from '../../../sevices/student.service';
 
 @Component({
   selector: 'search-students',
