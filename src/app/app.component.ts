@@ -15,11 +15,6 @@ export class AppComponent {
 
     }
 
-
-
-
-
-
     x: number = 5;
 
     title: string = "Hello My - App";

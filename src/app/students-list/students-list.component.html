@@ -1,3 +1,9 @@
+<search-students (searchResults)="onSearchResults($event)"></search-students>
+
+<div class="form-check mb-3">
+    <input type="checkbox" class="form-check-input" id="showActive" #chb (change)="showActive(chb.checked)">
+    <label class="form-check-label form-text" for="showActive">show active students</label>
+</div>
 <ul  class="list-group">
     <li *ngFor="let student of students" (click)="selectedId(student.id)"
     class="list-group-item" 
